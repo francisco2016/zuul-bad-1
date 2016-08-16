@@ -19,7 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -34,23 +34,37 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
-      
+        //--------  Room outside, theater, pub, lab, office;
+        Room vestibulo,cocina,salon,biblioteca,trastero,h1,terraza;
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        
-        // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        //         outside = new Room("outside the main entrance of the university");
+        //         theater = new Room("in a lecture theater");
+        //         pub = new Room("in the campus pub");
+        //         lab = new Room("in a computing lab");
+        //         office = new Room("in the computing admin office");
+        vestibulo = new Room("  en le vetíbulo de la casa, dónde vamos, elige.");
+        cocina = new Room("  en la cocina, busquemos hielo!!");
+        salon = new Room(" en el salón, tiene salidas en todas direcciones.");
+        biblioteca = new Room("  en la biblio, busquemos el plano.");
+        trastero = new Room("  en el tratero, cojamos el taladro.");
+        h1 = new Room(" en la  habitación, tiene buena cama.");
+        terraza = new Room("en la terraza, en ella trazamos la huída de emergencia");
 
-        currentRoom = outside;  // start game outside
+        // initialise room exits
+        //         outside.setExits(null, theater, lab, pub);
+        //         theater.setExits(null, null, null, outside);
+        //         pub.setExits(null, outside, null, null);
+        //         lab.setExits(outside, office, null, null);
+        //         office.setExits(null, null, null, lab);
+        vestibulo.setExits(salon, cocina, null, null);
+        cocina.setExits(trastero, null, null, vestibulo);
+        salon.setExits(h1, trastero, vestibulo, biblioteca);
+        biblioteca.setExits(null, salon, null, null);
+        trastero.setExits(terraza, null,cocina, salon);
+        h1.setExits(null, trastero, salon, null);
+        terraza.setExits(null, null, trastero, null);
+        
+        currentRoom = vestibulo;  // start game outside
     }
 
     /**
@@ -62,7 +76,7 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
