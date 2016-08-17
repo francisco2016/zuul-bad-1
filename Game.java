@@ -47,7 +47,7 @@ public class Game
 
         vestibulo.setExits(salon, cocina, null, null, null);
         cocina.setExits(trastero, null, null, null, vestibulo);
-        salon.setExits(h1, trastero, vestibulo, cocina, biblioteca);
+        salon.setExits(h1, trastero,  cocina, vestibulo, biblioteca);
         biblioteca.setExits(null, salon, null, null, null);
         trastero.setExits(terraza, null, null, cocina, salon);
         h1.setExits(null, trastero, null, salon, null);
@@ -86,10 +86,9 @@ public class Game
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
-        printLocationInfo();
+        printLocationInfo();//------------------------------------------------------------------------------------ 0108
     
         System.out.println();
-    
     }
 
     /**
@@ -175,22 +174,8 @@ public class Game
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
-            printLocationInfo();
-            //             if(currentRoom.northExit != null) {
-            //                 System.out.print("north ");
-            //             }
-            //             if(currentRoom.eastExit != null) {
-            //                 System.out.print("east ");
-            //             }
-            //             if(currentRoom.southeastExit != null) {// --------------------------------------------------- 0110.
-            //                 System.out.print("southeast ");
-            //             }
-            //             if(currentRoom.southExit != null) {
-            //                 System.out.print("south ");
-            //             }
-            //             if(currentRoom.westExit != null) {
-            //                 System.out.print("west ");
-            //             }
+            printLocationInfo();// ------------------------------------------------------------------------ 0108
+            
             System.out.println();
         }
     }
@@ -212,7 +197,7 @@ public class Game
     }
 
     /**
-     * Método privado para resolver la repetición de código en los métodos printWelcome() y goRom().------------- 0108
+     * Método privado para resolver la repetición de código en los métodos printWelcome() y goRom().-------------------- 0108
      */
     private void printLocationInfo(){
         if(currentRoom.northExit != null) {

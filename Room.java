@@ -48,7 +48,7 @@ public class Room
         if(east != null)
             eastExit = east;
         if(southeast != null)//--------------------------------------------------- add para 0110.
-            southeastExit = southeast;
+            southeastExit = southeast;        
         if(south != null)
             southExit = south;
         if(west != null)
@@ -63,5 +63,4 @@ public class Room
         return description;
     }
 
-    
 }
