@@ -34,14 +34,9 @@ public class Game
      */
     private void createRooms()
     {
-        //--------  Room outside, theater, pub, lab, office;
+
         Room vestibulo,cocina,salon,biblioteca,trastero,h1,terraza;
-        // create the rooms
-        //         outside = new Room("outside the main entrance of the university");
-        //         theater = new Room("in a lecture theater");
-        //         pub = new Room("in the campus pub");
-        //         lab = new Room("in a computing lab");
-        //         office = new Room("in the computing admin office");
+
         vestibulo = new Room("  en le vetíbulo de la casa, dónde vamos, elige.");
         cocina = new Room("  en la cocina, busquemos hielo!!");
         salon = new Room(" en el salón, tiene salidas en todas direcciones.");
@@ -50,19 +45,13 @@ public class Game
         h1 = new Room(" en la  habitación, tiene buena cama.");
         terraza = new Room("en la terraza, en ella trazamos la huída de emergencia");
 
-        // initialise room exits
-        //         outside.setExits(null, theater, lab, pub);
-        //         theater.setExits(null, null, null, outside);
-        //         pub.setExits(null, outside, null, null);
-        //         lab.setExits(outside, office, null, null);
-        //         office.setExits(null, null, null, lab);
-        vestibulo.setExits(salon, cocina, null, null);
-        cocina.setExits(trastero, null, null, vestibulo);
-        salon.setExits(h1, trastero, vestibulo, biblioteca);
-        biblioteca.setExits(null, salon, null, null);
-        trastero.setExits(terraza, null,cocina, salon);
-        h1.setExits(null, trastero, salon, null);
-        terraza.setExits(null, null, trastero, null);
+        vestibulo.setExits(salon, cocina, null, null, null);
+        cocina.setExits(trastero, null, null, null, vestibulo);
+        salon.setExits(h1, trastero, vestibulo, cocina, biblioteca);
+        biblioteca.setExits(null, salon, null, null, null);
+        trastero.setExits(terraza, null, null, cocina, salon);
+        h1.setExits(null, trastero, null, salon, null);
+        terraza.setExits(null, null, null, trastero, null);
         
         currentRoom = vestibulo;  // start game outside
     }
@@ -102,6 +91,9 @@ public class Game
         }
         if(currentRoom.eastExit != null) {
             System.out.print("east ");
+        }
+        if(currentRoom.southeastExit != null) {//-------------------------------------------------- add para 0110.
+            System.out.print("southeast ");
         }
         if(currentRoom.southExit != null) {
             System.out.print("south ");
@@ -177,6 +169,9 @@ public class Game
         }
         if(direction.equals("east")) {
             nextRoom = currentRoom.eastExit;
+        }
+        if(direction.equals("southeast")) {// --------------------------------------------------- 0110.
+            nextRoom = currentRoom.southeastExit;
         }
         if(direction.equals("south")) {
             nextRoom = currentRoom.southExit;
