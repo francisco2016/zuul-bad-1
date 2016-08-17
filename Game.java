@@ -52,7 +52,7 @@ public class Game
         trastero.setExits(terraza, null, null, cocina, salon);
         h1.setExits(null, trastero, null, salon, null);
         terraza.setExits(null, null, null, trastero, null);
-        
+
         currentRoom = vestibulo;  // start game outside
     }
 
@@ -86,22 +86,10 @@ public class Game
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
-        if(currentRoom.northExit != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.eastExit != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.southeastExit != null) {//-------------------------------------------------- add para 0110.
-            System.out.print("southeast ");
-        }
-        if(currentRoom.southExit != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.westExit != null) {
-            System.out.print("west ");
-        }
+        printLocationInfo();
+    
         System.out.println();
+    
     }
 
     /**
@@ -187,18 +175,22 @@ public class Game
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
-            if(currentRoom.northExit != null) {
-                System.out.print("north ");
-            }
-            if(currentRoom.eastExit != null) {
-                System.out.print("east ");
-            }
-            if(currentRoom.southExit != null) {
-                System.out.print("south ");
-            }
-            if(currentRoom.westExit != null) {
-                System.out.print("west ");
-            }
+            printLocationInfo();
+            //             if(currentRoom.northExit != null) {
+            //                 System.out.print("north ");
+            //             }
+            //             if(currentRoom.eastExit != null) {
+            //                 System.out.print("east ");
+            //             }
+            //             if(currentRoom.southeastExit != null) {// --------------------------------------------------- 0110.
+            //                 System.out.print("southeast ");
+            //             }
+            //             if(currentRoom.southExit != null) {
+            //                 System.out.print("south ");
+            //             }
+            //             if(currentRoom.westExit != null) {
+            //                 System.out.print("west ");
+            //             }
             System.out.println();
         }
     }
@@ -218,4 +210,29 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
+
+    /**
+     * Método privado para resolver la repetición de código en los métodos printWelcome() y goRom().------------- 0108
+     */
+    private void printLocationInfo(){
+        if(currentRoom.northExit != null) {
+            System.out.print("north ");
+        }
+        if(currentRoom.eastExit != null) {
+            System.out.print("east ");
+        }
+        if(currentRoom.southeastExit != null) {
+            System.out.print("southeast ");
+        }
+        if(currentRoom.southExit != null) {
+            System.out.print("south ");
+        }
+        if(currentRoom.westExit != null) {
+            System.out.print("west ");
+        }
+
+    }
 }
+
+
+
