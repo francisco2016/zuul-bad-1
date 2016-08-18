@@ -37,11 +37,11 @@ public class Game
 
         Room vestibulo,cocina,salon,biblioteca,trastero,h1,terraza;
 
-        vestibulo = new Room("  en le vetíbulo de la casa, dónde vamos, elige.");
+        vestibulo = new Room("  en le vestíbulo de la casa, dónde vamos, elige.");
         cocina = new Room("  en la cocina, busquemos hielo!!");
         salon = new Room(" en el salón, tiene salidas en todas direcciones.");
         biblioteca = new Room("  en la biblio, busquemos el plano.");
-        trastero = new Room("  en el tratero, cojamos el taladro.");
+        trastero = new Room("  en el trastero, cojamos el taladro.");
         h1 = new Room(" en la  habitación, tiene buena cama.");
         terraza = new Room("en la terraza, en ella trazamos la huída de emergencia");
 
