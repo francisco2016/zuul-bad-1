@@ -71,13 +71,13 @@ public class Room
         Room salida = null;
         if(adress.equals("north"))
             salida = northExit;
-        if(adress.equals("east"));
+        if(adress.equals("east"))
         salida = eastExit;
-        if(adress.equals("southeast"));
+        if(adress.equals("southeast"))
         salida = southeastExit;
-        if(adress.equals("south"));
+        if(adress.equals("south"))
         salida = southExit;
-        if(adress.equals("west"));
+        if(adress.equals("west"))
         salida = westExit;
         return salida;
     }
@@ -91,19 +91,19 @@ public class Room
     public String getExitString(){
         String salidaRoom = "Exit: ";
         if(northExit != null) {
-            salidaRoom += ("north ");
+            salidaRoom += "north ";
         }
         if(eastExit != null) {
-            salidaRoom += ("east ");
+            salidaRoom += "east ";
         }
         if(southeastExit != null) {
-            salidaRoom += ("southeast ");
+            salidaRoom += "southeast ";
         }
         if(southExit != null) {
-            salidaRoom += ("south ");
+            salidaRoom += "south ";
         }
         if(westExit != null) {
-            salidaRoom += ("west ");
+            salidaRoom += "west ";
         }
         
         return salidaRoom;

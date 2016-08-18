@@ -150,34 +150,31 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        
-        Room nextRoom = null;
-        if(direction.equals("north")) {
-            nextRoom = currentRoom.northExit;
-        }
-        if(direction.equals("east")) {
-            nextRoom = currentRoom.eastExit;
-        }
-        if(direction.equals("southeast")) {// --------------------------------------------------- 0110.
-            nextRoom = currentRoom.southeastExit;
-        }
-        if(direction.equals("south")) {
-            nextRoom = currentRoom.southExit;
-        }
-        if(direction.equals("west")) {
-            nextRoom = currentRoom.westExit;
-        }
+
+        Room nextRoom = currentRoom.getExit(direction);//utilizando el mt.getExit(), simplificamos el código.-------------0111
+        //         Room nextRoom = null;
+        //         if(direction.equals("north")) {
+        //             nextRoom = currentRoom.northExit;
+        //         }
+        //         if(direction.equals("east")) {
+        //             nextRoom = currentRoom.eastExit;
+        //         }
+        //         if(direction.equals("southeast")) {// --------------------------------------------------- 0110.
+        //             nextRoom = currentRoom.southeastExit;
+        //         }
+        //         if(direction.equals("south")) {
+        //             nextRoom = currentRoom.southExit;
+        //         }
+        //         if(direction.equals("west")) {
+        //             nextRoom = currentRoom.westExit;
+        //         }
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
             printLocationInfo();// ------------------------------------------------------------------------ 0108
-
-            System.out.println();
         }
     }
 
@@ -201,21 +198,24 @@ public class Game
      * Método privado para resolver la repetición de código en los métodos printWelcome() y goRom().-------------------- 0108
      */
     private void printLocationInfo(){
-        if(currentRoom.northExit != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.eastExit != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.southeastExit != null) {
-            System.out.print("southeast ");
-        }
-        if(currentRoom.southExit != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.westExit != null) {
-            System.out.print("west ");
-        }
+        System.out.println("You are " +currentRoom.getDescription());
+        System.out.println(currentRoom.getExitString());
+        System.out.println();
+        //         if(currentRoom.northExit != null) {
+        //             System.out.print("north ");
+        //         }
+        //         if(currentRoom.eastExit != null) {
+        //             System.out.print("east ");
+        //         }
+        //         if(currentRoom.southeastExit != null) {
+        //             System.out.print("southeast ");
+        //         }
+        //         if(currentRoom.southExit != null) {
+        //             System.out.print("south ");
+        //         }
+        //         if(currentRoom.westExit != null) {
+        //             System.out.print("west ");
+        //         }
 
     }
 }
