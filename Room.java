@@ -72,29 +72,44 @@ public class Room
         if(adress.equals("north"))
             salida = northExit;
         if(adress.equals("east"));
-            salida = eastExit;
+        salida = eastExit;
         if(adress.equals("southeast"));
-            salida = southeastExit;
+        salida = southeastExit;
         if(adress.equals("south"));
-            salida = southExit;
+        salida = southExit;
         if(adress.equals("west"));
-            salida = westExit;
+        salida = westExit;
         return salida;
     }
 
+    /**
+     * Al pasar los atriutos a private, necesitamos un método que retorne el valor de cada uno de ellos para poder
+     * invocarles desde otras clasel. Return a description of the room's exits.
+     * For example: "Exits: north east west" -------------------------------------------------------------------------- 0111
+     * @ return A description of the available exits.
+     */
+    public String getExitString(){
+        String salidaRoom = "Exit: ";
+        if(northExit != null) {
+            salidaRoom += ("north ");
+        }
+        if(eastExit != null) {
+            salidaRoom += ("east ");
+        }
+        if(southeastExit != null) {
+            salidaRoom += ("southeast ");
+        }
+        if(southExit != null) {
+            salidaRoom += ("south ");
+        }
+        if(westExit != null) {
+            salidaRoom += ("west ");
+        }
+        
+        return salidaRoom;
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

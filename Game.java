@@ -87,7 +87,7 @@ public class Game
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
         printLocationInfo();//------------------------------------------------------------------------------------ 0108
-    
+
         System.out.println();
     }
 
@@ -150,6 +150,7 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
+        
         Room nextRoom = null;
         if(direction.equals("north")) {
             nextRoom = currentRoom.northExit;
@@ -175,7 +176,7 @@ public class Game
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
             printLocationInfo();// ------------------------------------------------------------------------ 0108
-            
+
             System.out.println();
         }
     }
@@ -218,6 +219,4 @@ public class Game
 
     }
 }
-
-
 
