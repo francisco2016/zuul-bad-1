@@ -16,12 +16,7 @@ import java.util.HashMap;
 public class Room 
 {
     private String description;
-    private HashMap<String, Room> salidas;// implementamos un HashMap para sustituir a los atributos comentados.-----------0112
-    //     private Room northExit;
-    //     private Room southExit;
-    //     private Room eastExit;
-    //     private Room westExit;
-    //     private Room southeastExit;//----------------------------------- 0110.
+    private HashMap<String, Room> salidas;
 
     /**
      * Create a room described "description". Initially, it has
@@ -34,38 +29,38 @@ public class Room
         this.description = description;
         salidas = new HashMap<>();
     }
+    //     Este método es sustituido por el método setExit(...., ....) para poder establecer un nº ilimitado de salidas.
+    //     /**
+    //      * Define the exits of this room.  Every direction either leads
+    //      * to another room or is null (no exit there).
+    //      * @param north The north exit.
+    //      * @param east The east east.
+    //      * @param southeast The southeast exit.
+    //      * @param south The south exit.
+    //      * @param west The west exit.
+    //      */
+    //     public void setExits(Room north, Room east, Room southeast, Room south, Room west) 
+    //     { 
+    //         if(north != null)
+    //             salidas.put("north", north);
+    //         if(east != null)
+    //             salidas.put("east", east);
+    //         if(southeast != null)
+    //             salidas.put("southeast", southeast);        
+    //         if(south != null)
+    //             salidas.put("south", south);
+    //         if(west != null)
+    //             salidas.put("west", west);
+    //     }
 
     /**
-     * Define the exits of this room.  Every direction either leads
-     * to another room or is null (no exit there).
-     * @param north The north exit.
-     * @param east The east east.
-     * @param southeast The southeast exit.
-     * @param south The south exit.
-     * @param west The west exit.
+     * nuevo mt, para permitir tener un nº ilimitado de salidas, ya que setExits() limita las salidas al nº de parámetros que 
+     * se le pasen, por lo que eliminamos.
+     * Al invocar este nuevo método queda automáticamente almacenado en el HashMat la nueva dirección y la nueva habitación.
+     * ------------------------------------------------------------ 0113
      */
-    public void setExits(Room north, Room east, Room southeast, Room south, Room west) 
-    { 
-        //          if(north != null)
-        //             northExit = north;
-        //         if(east != null)
-        //             eastExit = east;
-        //         if(southeast != null)//--------------------------------------------------- add para 0110.
-        //             southeastExit = southeast;        
-        //         if(south != null)
-        //             southExit = south;
-        //         if(west != null)
-        //             westExit = west;
-        if(north != null)//cambio de código obligado al utilizar el HashMap.
-            salidas.put("north", north);
-        if(east != null)
-            salidas.put("east", east);
-        if(southeast != null)//--------------------------------------------------- add para 0110.
-            salidas.put("southeast", southeast);        
-        if(south != null)
-            salidas.put("south", south);
-        if(west != null)
-            salidas.put("west", west);
+    public void setExit(String direction, Room nextRoom){
+        salidas.put(direction, nextRoom);
     }
 
     /**
@@ -82,17 +77,6 @@ public class Room
      */
     public Room getExit(String adress){
         Room salida = null;
-        //         if(adress.equals("north"))
-        //             salida = northExit;
-        //         if(adress.equals("east"))
-        //         salida = eastExit;
-        //         if(adress.equals("southeast"))
-        //         salida = southeastExit;
-        //         if(adress.equals("south"))
-        //         salida = southExit;
-        //         if(adress.equals("west"))
-        //         salida = westExit
-        //código modificado devido a la utilización del HashMap.
         if(adress.equals("north"))
             salida = salidas.get("north");
         if(adress.equals("east"))

@@ -45,14 +45,38 @@ public class Game
         h1 = new Room(" en la  habitación, tiene buena cama.");
         terraza = new Room("en la terraza, en ella trazamos la huída de emergencia");
 
-        vestibulo.setExits(salon, cocina, null, null, null);
-        cocina.setExits(trastero, null, null, null, vestibulo);
-        salon.setExits(h1, trastero,  cocina, vestibulo, biblioteca);
-        biblioteca.setExits(null, salon, null, null, null);
-        trastero.setExits(terraza, null, null, cocina, salon);
-        h1.setExits(null, trastero, null, salon, null);
-        terraza.setExits(null, null, null, trastero, null);
-
+        //         vestibulo.setExits(salon, cocina, null, null, null);
+        //         cocina.setExits(trastero, null, null, null, vestibulo);
+        //         salon.setExits(h1, trastero,  cocina, vestibulo, biblioteca);
+        //         biblioteca.setExits(null, salon, null, null, null);
+        //         trastero.setExits(terraza, null, null, cocina, salon);
+        //         h1.setExits(null, trastero, null, salon, null);
+        //         terraza.setExits(null, null, null, trastero, null);
+        //  CÓDIGO COMENTADO PARA SER SUSTITUIDO POR NUECO CÓDIGO ADAPTADO AL NUEVO MÉTODO setExit(direccion, habitacion)
+        
+        vestibulo.setExit("north", salon);//------------------------------------------------------------------ 0113.
+        vestibulo.setExit("east", cocina);
+        
+        cocina.setExit("north", trastero);
+        cocina.setExit("west", vestibulo);
+        
+        salon.setExit("north", h1);
+        salon.setExit("east", trastero);
+        salon.setExit("southeast", cocina);
+        salon.setExit("south", vestibulo );
+        salon.setExit("west", biblioteca);
+        
+        biblioteca.setExit("east", salon);
+        
+        trastero.setExit("north", terraza);
+        trastero.setExit("south", cocina);
+        trastero.setExit("west", salon);
+        
+        h1.setExit("east", trastero);
+        h1.setExit("south", salon);
+        
+        terraza.setExit("south", trastero);
+        
         currentRoom = vestibulo;  // start game outside
     }
 
@@ -151,7 +175,7 @@ public class Game
 
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
-        
+
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
@@ -183,7 +207,7 @@ public class Game
     private void printLocationInfo(){
         System.out.println("You are " +currentRoom.getDescription());
         System.out.println(currentRoom.getExitString());// invocando al mt getExitString() simplificamos el código
-                                                                // comentad0  ------------------------------------- 0111
+        // comentad0  ------------------------------------- 0111
         System.out.println();
 
     }
