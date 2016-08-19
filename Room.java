@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -29,29 +30,6 @@ public class Room
         this.description = description;
         salidas = new HashMap<>();
     }
-    //     Este método es sustituido por el método setExit(...., ....) para poder establecer un nº ilimitado de salidas.
-    //     /**
-    //      * Define the exits of this room.  Every direction either leads
-    //      * to another room or is null (no exit there).
-    //      * @param north The north exit.
-    //      * @param east The east east.
-    //      * @param southeast The southeast exit.
-    //      * @param south The south exit.
-    //      * @param west The west exit.
-    //      */
-    //     public void setExits(Room north, Room east, Room southeast, Room south, Room west) 
-    //     { 
-    //         if(north != null)
-    //             salidas.put("north", north);
-    //         if(east != null)
-    //             salidas.put("east", east);
-    //         if(southeast != null)
-    //             salidas.put("southeast", southeast);        
-    //         if(south != null)
-    //             salidas.put("south", south);
-    //         if(west != null)
-    //             salidas.put("west", west);
-    //     }
 
     /**
      * nuevo mt, para permitir tener un nº ilimitado de salidas, ya que setExits() limita las salidas al nº de parámetros que 
@@ -73,21 +51,23 @@ public class Room
 
     /**
      * toma como parámetro una cadena que representa una dirección y devuelve el objeto de la clase Room
-     * asociado a esa salida o null si no hay salida.--------------------------------------------------------------  0111
+     * asociado a esa salida o null si no hay salida.
      */
     public Room getExit(String adress){
-        Room salida = null;
-        if(adress.equals("north"))
-            salida = salidas.get("north");
-        if(adress.equals("east"))
-            salida = salidas.get("east");
-        if(adress.equals("southeast"))
-            salida = salidas.get("southeast");
-        if(adress.equals("south"))
-            salida = salidas.get("south");
-        if(adress.equals("west"))
-            salida = salidas.get("west");
-        return salida;
+        //         Room salida = null;
+        //         if(adress.equals("north"))
+        //             salida = salidas.get("north");
+        //         if(adress.equals("east"))
+        //             salida = salidas.get("east");
+        //         if(adress.equals("southeast"))
+        //             salida = salidas.get("southeast");
+        //         if(adress.equals("south"))
+        //             salida = salidas.get("south");
+        //         if(adress.equals("west"))
+        //             salida = salidas.get("west");
+
+        //UTILIZANDO EL HashMap PASAMOS EL PARÁMETRO AL MÉTODO GET() Y NOS DEVUELVE EL OBJETO CORRESPONDIENTE A ESA CLAVE.
+        return salidas.get(adress);
     }
 
     /**
@@ -97,24 +77,36 @@ public class Room
      * @ return A description of the available exits.
      */
     public String getExitString(){
-        String salidaRoom = "Exit: ";
-        if(salidas.get("north") != null) {
-            salidaRoom += "north ";
+        //mediante la utilización del HashMap, podemos reducir código mediante el mt keySet() de dicha clase. Este mt retorna
+        //todas las claves del mapa.
+        //Estas claves las guardo en una VL de tipo set.
+        Set<String> descripcionSalida = salidas.keySet();
+        String salidaRoom = "Exit: "; //VL para retornar el valor de las claves.
+        //recorro el conjunto con un for y guardo los valores en la VL salidaRoom
+        for(String direccion: descripcionSalida){
+            salidaRoom += direccion + " "; 
         }
-        if(salidas.get("east") != null) {
-            salidaRoom += "east ";
-        }
-        if(salidas.get("southeast") != null) {
-            salidaRoom += "southeast ";
-        }
-        if(salidas.get("south") != null) {
-            salidaRoom += "south ";
-        }
-        if(salidas.get("west") != null) {
-            salidaRoom += "west ";
-        }
+        
+        return salidaRoom; //finalmente devuelvo la VL:
+        
+            //         String salidaRoom = "Exit: ";
+            //         if(salidas.get("north") != null) {
+            //             salidaRoom += "north ";
+            //         }
+            //         if(salidas.get("east") != null) {
+            //             salidaRoom += "east ";
+            //         }
+            //         if(salidas.get("southeast") != null) {
+            //             salidaRoom += "southeast ";
+            //         }
+            //         if(salidas.get("south") != null) {
+            //             salidaRoom += "south ";
+            //         }
+            //         if(salidas.get("west") != null) {
+            //             salidaRoom += "west ";
+            //         }
 
-        return salidaRoom;
+            //return salidaRoom;
     }
 
 }

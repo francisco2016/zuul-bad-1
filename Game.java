@@ -44,15 +44,6 @@ public class Game
         trastero = new Room("  en el trastero, cojamos el taladro.");
         h1 = new Room(" en la  habitación, tiene buena cama.");
         terraza = new Room("en la terraza, en ella trazamos la huída de emergencia");
-
-        //         vestibulo.setExits(salon, cocina, null, null, null);
-        //         cocina.setExits(trastero, null, null, null, vestibulo);
-        //         salon.setExits(h1, trastero,  cocina, vestibulo, biblioteca);
-        //         biblioteca.setExits(null, salon, null, null, null);
-        //         trastero.setExits(terraza, null, null, cocina, salon);
-        //         h1.setExits(null, trastero, null, salon, null);
-        //         terraza.setExits(null, null, null, trastero, null);
-        //  CÓDIGO COMENTADO PARA SER SUSTITUIDO POR NUECO CÓDIGO ADAPTADO AL NUEVO MÉTODO setExit(direccion, habitacion)
         
         vestibulo.setExit("north", salon);//------------------------------------------------------------------ 0113.
         vestibulo.setExit("east", cocina);
