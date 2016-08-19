@@ -1,3 +1,4 @@
+import java.util.HashMap;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -15,11 +16,12 @@
 public class Room 
 {
     private String description;
-    private Room northExit;
-    private Room southExit;
-    private Room eastExit;
-    private Room westExit;
-    private Room southeastExit;//----------------------------------- 0110.
+    private HashMap<String, Room> salidas;// implementamos un HashMap para sustituir a los atributos comentados.-----------0112
+    //     private Room northExit;
+    //     private Room southExit;
+    //     private Room eastExit;
+    //     private Room westExit;
+    //     private Room southeastExit;//----------------------------------- 0110.
 
     /**
      * Create a room described "description". Initially, it has
@@ -30,6 +32,7 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        salidas = new HashMap<>();
     }
 
     /**
@@ -42,17 +45,27 @@ public class Room
      * @param west The west exit.
      */
     public void setExits(Room north, Room east, Room southeast, Room south, Room west) 
-    {
-        if(north != null)
-            northExit = north;
+    { 
+        //          if(north != null)
+        //             northExit = north;
+        //         if(east != null)
+        //             eastExit = east;
+        //         if(southeast != null)//--------------------------------------------------- add para 0110.
+        //             southeastExit = southeast;        
+        //         if(south != null)
+        //             southExit = south;
+        //         if(west != null)
+        //             westExit = west;
+        if(north != null)//cambio de código obligado al utilizar el HashMap.
+            salidas.put("north", north);
         if(east != null)
-            eastExit = east;
+            salidas.put("east", east);
         if(southeast != null)//--------------------------------------------------- add para 0110.
-            southeastExit = southeast;        
+            salidas.put("southeast", southeast);        
         if(south != null)
-            southExit = south;
+            salidas.put("south", south);
         if(west != null)
-            westExit = west;
+            salidas.put("west", west);
     }
 
     /**
@@ -69,16 +82,27 @@ public class Room
      */
     public Room getExit(String adress){
         Room salida = null;
+        //         if(adress.equals("north"))
+        //             salida = northExit;
+        //         if(adress.equals("east"))
+        //         salida = eastExit;
+        //         if(adress.equals("southeast"))
+        //         salida = southeastExit;
+        //         if(adress.equals("south"))
+        //         salida = southExit;
+        //         if(adress.equals("west"))
+        //         salida = westExit
+        //código modificado devido a la utilización del HashMap.
         if(adress.equals("north"))
-            salida = northExit;
+            salida = salidas.get("north");
         if(adress.equals("east"))
-        salida = eastExit;
+            salida = salidas.get("east");
         if(adress.equals("southeast"))
-        salida = southeastExit;
+            salida = salidas.get("southeast");
         if(adress.equals("south"))
-        salida = southExit;
+            salida = salidas.get("south");
         if(adress.equals("west"))
-        salida = westExit;
+            salida = salidas.get("west");
         return salida;
     }
 
@@ -90,35 +114,24 @@ public class Room
      */
     public String getExitString(){
         String salidaRoom = "Exit: ";
-        if(northExit != null) {
+        if(salidas.get("north") != null) {
             salidaRoom += "north ";
         }
-        if(eastExit != null) {
+        if(salidas.get("east") != null) {
             salidaRoom += "east ";
         }
-        if(southeastExit != null) {
+        if(salidas.get("southeast") != null) {
             salidaRoom += "southeast ";
         }
-        if(southExit != null) {
+        if(salidas.get("south") != null) {
             salidaRoom += "south ";
         }
-        if(westExit != null) {
+        if(salidas.get("west") != null) {
             salidaRoom += "west ";
         }
-        
+
         return salidaRoom;
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
