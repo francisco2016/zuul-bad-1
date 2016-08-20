@@ -40,7 +40,21 @@ public class Room
     public void setExit(String direction, Room nextRoom){
         salidas.put(direction, nextRoom);
     }
+    
+   	/**
+   	 *Modifica el método printInfoLocation de la clase Game para que haga uso del método añadido en el paso anterior 
+   	 *en vez de la implementación actual.
+	 * Return a long description of this room, of the form:
+	 *     You are in the 'name of room'--------------------------------------------------------------------------- 0114
+	 *     Exits: north west southwest
+	 * @return A description of the room, including exits.
+    */
+	public String getLongDescription(){
+	    
+       return "You are " +description+ ".\n" +getExitString();
+	}
 
+    
     /**
      * @return The description of the room.
      */
@@ -54,17 +68,6 @@ public class Room
      * asociado a esa salida o null si no hay salida.
      */
     public Room getExit(String adress){
-        //         Room salida = null;
-        //         if(adress.equals("north"))
-        //             salida = salidas.get("north");
-        //         if(adress.equals("east"))
-        //             salida = salidas.get("east");
-        //         if(adress.equals("southeast"))
-        //             salida = salidas.get("southeast");
-        //         if(adress.equals("south"))
-        //             salida = salidas.get("south");
-        //         if(adress.equals("west"))
-        //             salida = salidas.get("west");
 
         //UTILIZANDO EL HashMap PASAMOS EL PARÁMETRO AL MÉTODO GET() Y NOS DEVUELVE EL OBJETO CORRESPONDIENTE A ESA CLAVE.
         return salidas.get(adress);
@@ -88,25 +91,6 @@ public class Room
         }
         
         return salidaRoom; //finalmente devuelvo la VL:
-        
-            //         String salidaRoom = "Exit: ";
-            //         if(salidas.get("north") != null) {
-            //             salidaRoom += "north ";
-            //         }
-            //         if(salidas.get("east") != null) {
-            //             salidaRoom += "east ";
-            //         }
-            //         if(salidas.get("southeast") != null) {
-            //             salidaRoom += "southeast ";
-            //         }
-            //         if(salidas.get("south") != null) {
-            //             salidaRoom += "south ";
-            //         }
-            //         if(salidas.get("west") != null) {
-            //             salidaRoom += "west ";
-            //         }
-
-            //return salidaRoom;
     }
 
 }

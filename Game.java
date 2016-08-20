@@ -44,30 +44,30 @@ public class Game
         trastero = new Room("  en el trastero, cojamos el taladro.");
         h1 = new Room(" en la  habitación, tiene buena cama.");
         terraza = new Room("en la terraza, en ella trazamos la huída de emergencia");
-        
+
         vestibulo.setExit("north", salon);//------------------------------------------------------------------ 0113.
         vestibulo.setExit("east", cocina);
-        
+
         cocina.setExit("north", trastero);
         cocina.setExit("west", vestibulo);
-        
+
         salon.setExit("north", h1);
         salon.setExit("east", trastero);
         salon.setExit("southeast", cocina);
         salon.setExit("south", vestibulo );
         salon.setExit("west", biblioteca);
-        
+
         biblioteca.setExit("east", salon);
-        
+
         trastero.setExit("north", terraza);
         trastero.setExit("south", cocina);
         trastero.setExit("west", salon);
-        
+
         h1.setExit("east", trastero);
         h1.setExit("south", salon);
-        
+
         terraza.setExit("south", trastero);
-        
+
         currentRoom = vestibulo;  // start game outside
     }
 
@@ -99,7 +99,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println("You are " + currentRoom.getDescription());
+        //System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
         printLocationInfo();//------------------------------------------------------------------------------------ 0108
 
@@ -196,11 +196,9 @@ public class Game
      * Método privado para resolver la repetición de código en los métodos printWelcome() y goRom().-------------------- 0108
      */
     private void printLocationInfo(){
-        System.out.println("You are " +currentRoom.getDescription());
-        System.out.println(currentRoom.getExitString());// invocando al mt getExitString() simplificamos el código
-        // comentad0  ------------------------------------- 0111
+        
         System.out.println();
-
+        System.out.println(currentRoom.getLongDescription());
     }
 }
 
