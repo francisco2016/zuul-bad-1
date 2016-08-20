@@ -130,6 +130,9 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
+        else if (commandWord.equals("look")) {//-------------------------------------------------------------------- 0114.
+            printLocationInfo();
+        }
 
         return wantToQuit;
     }
@@ -194,6 +197,7 @@ public class Game
 
     /**
      * Método privado para resolver la repetición de código en los métodos printWelcome() y goRom().-------------------- 0108
+     * Modificado para obtener información del nuevo mt. getLongDescription() en la clase Room. --------------- 0113.
      */
     private void printLocationInfo(){
         
