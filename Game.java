@@ -37,13 +37,13 @@ public class Game
 
         Room vestibulo,cocina,salon,biblioteca,trastero,h1,terraza;
 
-        vestibulo = new Room("  en le vestíbulo de la casa, dónde vamos, elige.");
-        cocina = new Room("  en la cocina, busquemos hielo!!");
-        salon = new Room(" en el salón, tiene salidas en todas direcciones.");
-        biblioteca = new Room("  en la biblio, busquemos el plano.");
-        trastero = new Room("  en el trastero, cojamos el taladro.");
-        h1 = new Room(" en la  habitación, tiene buena cama.");
-        terraza = new Room("en la terraza, en ella trazamos la huída de emergencia");
+        vestibulo = new Room("  en le vestíbulo de la casa.", "\n Hay una botella de oxigeno, su peso es de:",12 );
+        cocina = new Room("  en la cocina, busquemos hielo!!", "\n Hay una extintor, su peso es de:",9);
+        salon = new Room(" en el salón, tiene salidas en todas direcciones.", "\n Hay alfombras cubridoras, su peso es de:",22 );
+        biblioteca = new Room("  en la biblio, busquemos el plano.", "\n Hay una lupa grande, su peso es de:",2 );
+        trastero = new Room("  en el trastero.", "\n Hay un taladro, su peso es de:",4 );
+        h1 = new Room(" en la  habitación, tiene buena cama.", "\n Hay una mascara de acero, su peso es de:",2 );
+        terraza = new Room("en la terraza, en ella trazamos la huída de emergencia", "\n Hay un telescopio, su peso es de:",12 );
 
         vestibulo.setExit("north", salon);//------------------------------------------------------------------ 0113.
         vestibulo.setExit("east", cocina);
@@ -147,7 +147,7 @@ public class Game
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
      */
-    public void printHelp() 
+    private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
 
@@ -205,7 +205,7 @@ public class Game
      */
     private void printLocationInfo(){
         
-        System.out.println();
+       System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
 }
