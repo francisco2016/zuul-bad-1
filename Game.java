@@ -133,6 +133,9 @@ public class Game
         else if (commandWord.equals("look")) {//-------------------------------------------------------------------- 0114.
             printLocationInfo();
         }
+        else if (commandWord.equals("eat")) {//-------------------------------------------------------------------- 0114.
+            System.out.println("You have eaten now and you are not hungry any more.");
+        }
 
         return wantToQuit;
     }
@@ -147,11 +150,11 @@ public class Game
     public void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        //System.out.println("around at the university.");
+
         printLocationInfo();//----------------------------------------------------------- 0116
         System.out.println("Your command words are:");
         parser.muestraComand();
-       // System.out.println("   go quit help");
+        System.out.println("   --------------------  ");
     }
 
     /** 
