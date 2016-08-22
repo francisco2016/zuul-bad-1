@@ -29,14 +29,13 @@ public class Parser
         commands = new CommandWords();
         reader = new Scanner(System.in);
     }
-
+    
     /**
-     * mt para retorna el valor del atributo commans, poder ser invocado desde
-     * la clase game y así poder reducir el acoplamiento entre game y commadWords
-     * ----------------------------------------------------  0116.
+     * imprime todos los comandos del juego, y facilita el desacoplamiento de la Game con ComandsWord
+     * ----------------------------------------------------------------------- 0116.
      */
-    public void comando(){
-       commands.showAll();
+    public void muestraComand(){
+        commands.showAll();
     }
     
     /**

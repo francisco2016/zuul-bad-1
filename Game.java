@@ -150,9 +150,8 @@ public class Game
         //System.out.println("around at the university.");
         printLocationInfo();//----------------------------------------------------------- 0116
         System.out.println("Your command words are:");
-
+        parser.muestraComand();
        // System.out.println("   go quit help");
-        parser.comando(); //-------------------------- 0116
     }
 
     /** 
