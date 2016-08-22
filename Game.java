@@ -144,13 +144,15 @@ public class Game
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
      */
-    private void printHelp() 
+    public void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
+        //System.out.println("around at the university.");
+        printLocationInfo();//----------------------------------------------------------- 0116
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+
+       // System.out.println("   go quit help");
+        parser.comando(); //-------------------------- 0116
     }
 
     /** 

@@ -25,6 +25,15 @@ public class CommandWords
     }
 
     /**
+     * Print all valid commands to System.out-------------------------------------------------------------------------- 0116
+     */
+    public void showAll(){
+        for(int i = 0; i < validCommands.length; i ++){
+            System.out.println(" " +validCommands[i]);
+        }
+    }
+    
+    /**
      * Check whether a given String is a valid command word. 
      * @return true if a given string is a valid command,
      * false if it isn't.

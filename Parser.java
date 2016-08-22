@@ -31,6 +31,15 @@ public class Parser
     }
 
     /**
+     * mt para retorna el valor del atributo commans, poder ser invocado desde
+     * la clase game y así poder reducir el acoplamiento entre game y commadWords
+     * ----------------------------------------------------  0116.
+     */
+    public void comando(){
+       commands.showAll();
+    }
+    
+    /**
      * @return The next command from the user.
      */
     public Command getCommand() 
