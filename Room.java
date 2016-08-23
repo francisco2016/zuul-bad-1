@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Set;
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -18,20 +19,22 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> salidas;
-    private String descriItem;//---------------------------------------------------------- 0117
-    private int pesoItem;//---------------------------------------------------------- 0117
-
+    //para poder añadir varios o ningún items en las habitaciones creo un ArrayList de Item y elimino los siguientes atributos.
+    //private String descriItem;//---------------------------------------------------------- 0117
+    //private int pesoItem;//---------------------------------------------------------- 0117
+    private ArrayList<Item> item;
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description, String descriItem, int pesoItem) 
+    public Room(String description) 
     {
         this.description = description;
-        this.descriItem = descriItem;//----------------------------------------0117
-        this.pesoItem = pesoItem;//--------------------------------------------0117
+        //this.descriItem = descriItem;//----------------------------------------0117
+        //this.pesoItem = pesoItem;//--------------------------------------------0117
+        item = new ArrayList<>();   //--------------------------------------------------------------------- 0119
         salidas = new HashMap<>();
     }
 
@@ -44,20 +47,37 @@ public class Room
     public void setExit(String direction, Room nextRoom){
         salidas.put(direction, nextRoom);
     }
-    
-   	/**
-   	 *Modifica el método printInfoLocation de la clase Game para que haga uso del método añadido en el paso anterior 
-   	 *en vez de la implementación actual.
-	 * Return a long description of this room, of the form:
-	 *     You are in the 'name of room'--------------------------------------------------------------------------- 0114
-	 *     Exits: north west southwest
-	 * @return A description of the room, including exits.
-    */
-	public String getLongDescription(){
-	    
-       return "You are " +description+ ".\n" +getExitString()+ ".\n" +descriItem+ ".\n" +pesoItem;
-	}
 
+    /**
+     *Modifica el método printInfoLocation de la clase Game para que haga uso del método añadido en el paso anterior 
+     *en vez de la implementación actual.
+     * Return a long description of this room, of the form:
+     *     You are in the 'name of room'--------------------------------------------------------------------------- 0114
+     *     Exits: north west southwest
+     * @return A description of the room, including exits and items.
+     */
+    public String getLongDescription(){
+        //modifico el código para adaptarlo al ArrayList<Item> -------------------------------------------------------- 0119.
+        // return "You are " +description+ ".\n" +getExitString()+ ".\n" +descriItem+ ".\n" +pesoItem;
+        String descrip = "You are " +description+ "\n" +getExitString();
+        if(item.size() != 0){
+            for(Item item2: item){
+                descrip += item2.descriItem();
+            }
+        }
+        else{
+            descrip = "You are " +description+ "\n pero ningún objeto útil.\n" +getExitString();
+        }
+            
+        return descrip;
+
+    }
+    /**
+     * método para añadir un item a la habitación.-------------------------------------------------------------------- 0199
+     */
+    public void addItem(Item item3){
+        item.add(item3);
+    }
     
     /**
      * @return The description of the room.
@@ -84,16 +104,14 @@ public class Room
      * @ return A description of the available exits.
      */
     public String getExitString(){
-        //mediante la utilización del HashMap, podemos reducir código mediante el mt keySet() de dicha clase. Este mt retorna
-        //todas las claves del mapa.
-        //Estas claves las guardo en una VL de tipo set.
+
         Set<String> descripcionSalida = salidas.keySet();
         String salidaRoom = "Exit: "; //VL para retornar el valor de las claves.
         //recorro el conjunto con un for y guardo los valores en la VL salidaRoom
         for(String direccion: descripcionSalida){
             salidaRoom += direccion + " "; 
         }
-        
+
         return salidaRoom; //finalmente devuelvo la VL:
     }
 
